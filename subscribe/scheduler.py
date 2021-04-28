@@ -1,3 +1,4 @@
+from uuid import uuid4
 import logging
 from apscheduler.events import *
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -171,7 +172,7 @@ class ScheduleManager(IScheduleManager):
     def add_job(self, task_id="", trigger=None, task=None) -> bool:
         try:
             settings = {}
-            settings["id"] = task_id
+            settings["id"] = task_id if task_id else str(uuid4())
             settings["func"] = task.run
             settings["coalesce"] = True
             settings["replace_existing"] = True

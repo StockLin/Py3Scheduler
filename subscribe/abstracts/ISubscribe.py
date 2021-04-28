@@ -47,10 +47,6 @@ class ITaskFileManager(abc.ABC):
 class ITask(abc.ABC):
 
     @abc.abstractmethod
-    def __init_(self, task_id:str):
-        raise NotImplementedError
-
-    @abc.abstractmethod
     def run(self) -> None:
         raise NotImplementedError
 
@@ -164,13 +160,13 @@ class ISubscribeHandler(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def remove_task(self, task_ids:str) -> list:
+    def remove_task(self, task_ids:list) -> list:
         raise NotImplementedError
 
     @abc.abstractmethod
-    def pause_task(self, task_ids:str) -> list:
+    def pause_task(self, task_ids:list) -> list:
         raise NotImplementedError
 
     @abc.abstractmethod
-    def resume_task(self, task_ids:str) -> list:
+    def resume_task(self, task_ids:list) -> list:
         raise NotImplementedError
